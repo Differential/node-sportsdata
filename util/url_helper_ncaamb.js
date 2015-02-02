@@ -118,7 +118,7 @@ function createLeagueHierarchyUrl() {
 }
 
 function createRankingsUrl() {
-  // URL should look like:  http://api.sportsdatallc.org/ncaamb-[access_level][version]/seasontd/[season]/[ncaamb_season]/rankings.xml?api_key=[your_api_key]
+  // URL should look like:  http://api.sportsdatallc.org/ncaamb-[access_level][version]/polls/rpi/[ncaamb_season]/rankings.xml?api_key=[your_api_key]
   return 'http://api.sportsdatallc.org/ncaamb-'
       + config.ncaamb.access_level
       + config.ncaamb.version
@@ -126,6 +126,19 @@ function createRankingsUrl() {
       + config.ncaamb.year
       + '/rankings.xml?api_key='
       + config.ncaamb.apikey;
+}
+
+function createStandingsUrl() {
+  // URL should look like: http://api.sportsdatallc.org/ncaamb-[access_level][version]/seasontd/[season]/[ncaamb_season]/standings.xml?api_key=[your_api_key]
+  return 'http://api.sportsdatallc.org/ncaamb-'
+    + config.ncaamb.access_level
+    + config.ncaamb.version
+    + '/seasontd/'
+    + config.ncaamb.year
+    + '/'
+    + config.ncaamb.season
+    + '/standings.xml?api_key='
+    + config.ncaamb.apikey;
 }
 
 module.exports = {
@@ -164,5 +177,9 @@ module.exports = {
 
   getRankingsUrl: function(){
     return createRankingsUrl();
-  }
+  },
+
+  getStandingsUrl: function(){
+    return createStandingsUrl();
+  },
 }
