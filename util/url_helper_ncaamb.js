@@ -125,7 +125,7 @@ function createRankingsUrl() {
       + '/polls/rpi/'
       + config.ncaamb.year
       + '/rankings.xml?api_key='
-      + config.nba.apikey;
+      + config.ncaamb.apikey;
 }
 
 module.exports = {
@@ -163,7 +163,6 @@ module.exports = {
   },
 
   getRankingsUrl: function(){
-    console.log(createRankingsUrl());
     return createRankingsUrl();
   }
 }
