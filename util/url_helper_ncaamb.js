@@ -163,6 +163,7 @@ module.exports = {
   },
 
   getRankingsUrl: function(){
+    console.log createRankingsUrl();
     return createRankingsUrl();
   }
 }
