@@ -66,6 +66,11 @@ function getLeagueHierarchy(callback) {
     createRequest(url, callback);
 }
 
+function getRankings(callback) {
+    var url = urlHelper.getRankingsUrl();
+    createRequest(url, callback);
+}
+
 function createRequest(url, callback) {
     request(url, function (error, response, body) {
 
@@ -121,5 +126,8 @@ module.exports = {
 
     getLeagueHierarchy: function(callback) {
         return getLeagueHierarchy(callback);
+    },
+    getRankings: function(callback) {
+        return getRankings(callback);
     }
 };

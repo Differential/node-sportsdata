@@ -117,6 +117,17 @@ function createLeagueHierarchyUrl() {
     + config.ncaamb.apikey;
 }
 
+function createRankingsUrl() {
+  // URL should look like:  http://api.sportsdatallc.org/ncaamb-[access_level][version]/seasontd/[season]/[ncaamb_season]/rankings.xml?api_key=[your_api_key]
+return 'http://api.sportsdatallc.org/ncaamb-'
+    + config.ncaamb.access_level
+    + config.ncaamb.version
+    + '/polls/rpi/'
+    + config.ncaamb.year
+    + '/rankings.xml?api_key='
+    + config.nba.apikey;
+}
+
 module.exports = {
 
   getSeasonScheduleUrl: function () {
