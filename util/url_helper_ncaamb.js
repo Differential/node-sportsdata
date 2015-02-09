@@ -141,6 +141,13 @@ function createStandingsUrl() {
     + config.ncaamb.apikey;
 }
 
+function createTournamentExampleUrl(fileName) {
+  // URL should look like: http://developer.sportsdatallc.com/files/[fileName].xml
+  return 'http://developer.sportsdatallc.com/files/'
+    + fileName
+    + '.xml';
+}
+
 module.exports = {
 
   getSeasonScheduleUrl: function () {
@@ -182,4 +189,7 @@ module.exports = {
   getStandingsUrl: function(){
     return createStandingsUrl();
   },
+  getTournamentExampleUrl: function(fileName){
+    return createTournamentExampleUrl(fileName);
+  }
 }

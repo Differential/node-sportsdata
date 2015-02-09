@@ -76,6 +76,11 @@ function getStandings(callback) {
     createRequest(url, callback);
 }
 
+function getTournamentExample(fileName, callback) {
+    var url = urlHelper.getTournamentExampleUrl(fileName);
+    createRequest(url, callback);
+}
+
 function createRequest(url, callback) {
     request(url, function (error, response, body) {
 
@@ -137,5 +142,8 @@ module.exports = {
     },
     getStandings: function(callback) {
         return getStandings(callback);
+    },
+    getTournamentExample: function(fileName, callback) {
+        return getTournamentExample(fileName, callback);
     }
 };
