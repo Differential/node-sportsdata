@@ -7,7 +7,7 @@
 var config = require('../config');
 
 // http(s)://api.sportsdatallc.org/nba-[access_level][version]/
-var BEGIN_URL = 'http://api.sportsdatallc.org/nfl-' + config.nfl.access_level + config.nfl.version + '/'
+var BEGIN_URL = 'http://api.sportsdatallc.org/nfl-' + config.nfl.access_level + config.nfl.version + '/';
 
 // .[format]?api_key=[your_api_key]
 var END_URL = '.' + config.nfl.format + '?api_key=' + config.nfl.apikey;

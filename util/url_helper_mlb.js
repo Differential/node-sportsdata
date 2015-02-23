@@ -7,7 +7,7 @@
 var config = require('../config');
 
 // http(s)://api.sportsdatallc.org/mlb-[access_level][version]/
-var BEGIN_URL = 'http://api.sportsdatallc.org/mlb-' + config.mlb.access_level + config.mlb.version + '/'
+var BEGIN_URL = 'http://api.sportsdatallc.org/mlb-' + config.mlb.access_level + config.mlb.version + '/';
 
 // .[format]?api_key=[your_api_key]
 var END_URL = '.' + config.mlb.format + '?api_key=' + config.mlb.apikey;

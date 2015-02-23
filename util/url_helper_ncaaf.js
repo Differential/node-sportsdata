@@ -7,7 +7,7 @@
 var config = require('../config');
 
 // http(s)://api.sportsdatallc.org/ncaaf-[access_level][version]/
-var BEGIN_URL = 'http://api.sportsdatallc.org/ncaaf-' + config.ncaaf.access_level + config.ncaaf.version + '/'
+var BEGIN_URL = 'http://api.sportsdatallc.org/ncaaf-' + config.ncaaf.access_level + config.ncaaf.version + '/';
 
 // .[format]?api_key=[your_api_key]
 var END_URL = '.' + config.ncaaf.format + '?api_key=' + config.ncaaf.apikey;
