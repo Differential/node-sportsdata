@@ -8,7 +8,7 @@
 var config = require('../config');
 
 // http(s)://api.sportsdatallc.org/nhl-[access_level][version]/
-var BEGIN_URL = 'http(s)://api.sportsdatallc.org/nhl-' + config.nhl.access_level + config.nhl.version + '/'
+var BEGIN_URL = 'http://api.sportsdatallc.org/nhl-' + config.nhl.access_level + config.nhl.version + '/'
 
 // .[format]?api_key=[your_api_key]
 var END_URL = '.' + config.nhl.format + '?api_key=' + config.nhl.apikey;

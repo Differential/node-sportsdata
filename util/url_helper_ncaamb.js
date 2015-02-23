@@ -7,7 +7,7 @@
 var config = require('../config');
 
 // http(s)://api.sportsdatallc.org/ncaamb-[access_level][version]/
-var BEGIN_URL = 'http(s)://api.sportsdatallc.org/ncaamb-' + config.ncaamb.access_level + config.ncaamb.version + '/'
+var BEGIN_URL = 'http://api.sportsdatallc.org/ncaamb-' + config.ncaamb.access_level + config.ncaamb.version + '/'
 
 // .[format]?api_key=[your_api_key]
 var END_URL = '.' + config.ncaamb.format + '?api_key=' + config.ncaamb.apikey;
