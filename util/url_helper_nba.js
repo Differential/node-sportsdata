@@ -6,55 +6,58 @@
 // config.nba.format
 var config = require('../config');
 
-// http(s)://api.sportsdatallc.org/nba-[access_level][version]/
-var BEGIN_URL = 'http://api.sportsdatallc.org/nba-' + config.nba.access_level + config.nba.version + '/';
-
-// .[format]?api_key=[your_api_key]
-var END_URL = '.' + config.nba.format + '?api_key=' + config.nba.apikey;
+function beginUrl(access_level, version) {
+  // http(s)://api.sportsdatallc.org/nba-[access_level][version]/
+  return 'http://api.sportsdatallc.org/nba-' + access_level + version + '/';
+}
+function endUrl(format, apikey) {
+  // .[format]?api_key=[your_api_key]
+  return '.' + format + '?api_key=' + apikey;
+}
 
 function createSeasonScheduleUrl() {
-  //  games/[season]/[nba_season]/schedule 
-  return BEGIN_URL + 'games/' + config.nba.seasonID + '/' + config.nba.season + '/schedule' + END_URL;
+  //  games/[season]/[nba_season]/schedule
+  return beginUrl(config.nba.access_level, config.nba.version) + 'games/' + config.nba.seasonID + '/' + config.nba.season + '/schedule' + endUrl(config.nba.format, config.nba.apikey);
 }
 
 function createDailyScheduleUrl(year, month, day) {
   // games/[year]/[month]/[day]/schedule 
-  return BEGIN_URL + 'games/' + year + '/' + month + '/' + day + '/schedule' + END_URL;
+  return beginUrl(config.nba.access_level, config.nba.version) + 'games/' + year + '/' + month + '/' + day + '/schedule' + endUrl(config.nba.format, config.nba.apikey);
 }
 
 function createBoxScoreUrl(gameID) {
   // games/[game_id]/boxscore 
-  return BEGIN_URL + 'games/' + gameID + '/boxscore' + END_URL;
+  return beginUrl(config.nba.access_level, config.nba.version) + 'games/' + gameID + '/boxscore' + endUrl(config.nba.format, config.nba.apikey);
 }
 
 function createGameSummaryUrl(gameID) {
   // games/[game_id]/summary
-  return BEGIN_URL + 'games/' + gameID + '/summary' + END_URL;
+  return beginUrl(config.nba.access_level, config.nba.version) + 'games/' + gameID + '/summary' + endUrl(config.nba.format, config.nba.apikey);
 }
 
 function createStandingsUrl() {
   // seasontd/[season]/[nba_season]/standings
-  return BEGIN_URL + 'seasontd/' + config.nba.seasonID + '/' + config.nba.season + '/standings' + END_URL;
+  return beginUrl(config.nba.access_level, config.nba.version) + 'seasontd/' + config.nba.seasonID + '/' + config.nba.season + '/standings' + endUrl(config.nba.format, config.nba.apikey);
 }
 
 function createRankingsUrl() {
   // seasontd/[season]/[nba_season]/rankings 
-  return BEGIN_URL + 'seasontd/' + config.nba.seasonID + '/' + config.nba.season + '/rankings' + END_URL;
+  return beginUrl(config.nba.access_level, config.nba.version) + 'seasontd/' + config.nba.seasonID + '/' + config.nba.season + '/rankings' + endUrl(config.nba.format, config.nba.apikey);
 }
 
 function createInjuriesUrl() {
   // league/injuries 
-  return BEGIN_URL + 'league/' + '/injuries' + END_URL;
+  return beginUrl(config.nba.access_level, config.nba.version) + 'league/' + '/injuries' + endUrl(config.nba.format, config.nba.apikey);
 }
 
 function createRosterUrl(teamID) {
   //  teams/[team_id]/profile 
-  return BEGIN_URL + 'teams/' + teamID + '/profile' + END_URL;
+  return beginUrl(config.nba.access_level, config.nba.version) + 'teams/' + teamID + '/profile' + endUrl(config.nba.format, config.nba.apikey);
 }
 
 function createSeasonalStatsUrl(teamID) {
   // seasontd/[season]/[nba_season]/teams/[teamID]/statistics
-  return BEGIN_URL + 'seasontd/' + config.nba.seasonID + '/' + config.nba.season + '/teams/' + teamID + '/statistics' + END_URL;
+  return beginUrl(config.nba.access_level, config.nba.version) + 'seasontd/' + config.nba.seasonID + '/' + config.nba.season + '/teams/' + teamID + '/statistics' + endUrl(config.nba.format, config.nba.apikey);
 }
 
 module.exports = {
