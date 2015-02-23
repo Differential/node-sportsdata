@@ -1,191 +1,108 @@
+// config.ncaamb.access_level
+// config.ncaamb.version
+// config.ncaamb.apikey
+// config.ncaamb.year
+// config.ncaamb.season
+// config.ncaamb.format
 var config = require('../config');
 
+// http(s)://api.sportsdatallc.org/ncaamb-[access_level][version]/
+var BEGIN_URL = 'http(s)://api.sportsdatallc.org/ncaamb-' + config.ncaamb.access_level + config.ncaamb.version + '/'
+
+// .[format]?api_key=[your_api_key]
+var END_URL = '.' + config.ncaamb.format + '?api_key=' + config.ncaamb.apikey;
+
 function createUrlWithEndpoint(endpoint) {
-  // URL should look like: http://api.sportsdatallc.org/ncaamb-[access_level][version]/games/[season]/[ncaamb_season]/[endpoint].xml?api_key=[your_api_key]
-  return 'http://api.sportsdatallc.org/ncaamb-'
-    + config.ncaamb.access_level
-    + config.ncaamb.version
-    + '/games/'
-    + config.ncaamb.year
-    + '/'
-    + config.ncaamb.season
-    + '/'
-    + endpoint
-    + '.xml?api_key='
-    + config.ncaamb.apikey;
+  return BEGIN_URL + 'games/' + config.ncaamb.year + '/' + config.ncaamb.season + '/' + endpoint + END_URL;
 }
 
 function createUrlWithEndpointWithDate(endpoint, year, month, day) {
-  // URL should look like: http://api.sportsdatallc.org/ncaamb-[access_level][version]/games/[year]/[month]/[day]/[endpoint].xml?api_key=[your_api_key]
-  return 'http://api.sportsdatallc.org/ncaamb-'
-    + config.ncaamb.access_level
-    + config.ncaamb.version
-    + '/games/'
-    + year
-    + '/'
-    + month
-    + '/'
-    + day
-    + '/'
-    + endpoint
-    + '.xml?api_key='
-    + config.ncaamb.apikey;
+  return BEGIN_URL + 'games/' + year + '/' + month + '/' + day + '/' + endpoint + END_URL;
 }
 
 function createSeasonScheduleUrl() {
-
-  // URL should look like: http://api.sportsdatallc.org/ncaamb-[access_level][version]/games/[season]/[ncaab_schedule]/schedule.xml?api_key=[your_api_key]
+  // games/[season]/[ncaab_schedule]/schedule 
   return createUrlWithEndpoint('schedule');
 }
 
 function createDailyScheduleUrl(year, month, day) {
-
-  // URL should look like: http://api.sportsdatallc.org/ncaamb-[access_level][version]/games/[year]/[month]/[day]/schedule.xml?api_key=[your_api_key]
+  // games/[year]/[month]/[day]/schedule 
   return createUrlWithEndpointWithDate('schedule', year, month, day);
 }
 
 function createBoxScoreUrl(gameID) {
-
-  // URL should look like: http://api.sportsdatallc.org/ncaamb-[access_level][version]/games/[game_id]/boxscore.xml?api_key=[your_api_key]
-  return 'http://api.sportsdatallc.org/ncaamb-'
-    + config.ncaamb.access_level
-    + config.ncaamb.version
-    + '/games/'
-    + gameID
-    + '/boxscore.xml?api_key='
-    + config.ncaamb.apikey;
+  // games/[game_id]/boxscore 
+  return BEGIN_URL + 'games/' + gameID + '/boxscore' + END_URL;
 }
 
 function createGameSummaryUrl(gameID) {
-
-  // URL should look like: http://api.sportsdatallc.org/ncaamb-[access_level][version]/games/[game_id]/summary.xml?api_key=[your_api_key]
-  return 'http://api.sportsdatallc.org/ncaamb-'
-    + config.ncaamb.access_level
-    + config.ncaamb.version
-    + '/games/'
-    + gameID
-    + '/summary.xml?api_key='
-    + config.ncaamb.apikey;
+  // games/[game_id]/summary
+  return BEGIN_URL + 'games/' + gameID + '/summary' + END_URL;
 }
 
 function createTournamentListUrl() {
-  // URL should look like:  http://api.sportsdatallc.org/ncaamb-[access_level][version]/tournaments/[season]/[ncaamb_season]/schedule.xml?api_key=[your_api_key]
-return 'http://api.sportsdatallc.org/ncaamb-'
-    + config.ncaamb.access_level
-    + config.ncaamb.version
-    + '/tournaments/'
-    + config.ncaamb.year
-    + '/'
-    + config.ncaamb.season
-    + '/schedule.xml?api_key='
-    + config.ncaamb.apikey;
+  // tournaments/[season]/[ncaamb_season]/schedule 
+  return BEGIN_URL + 'tournaments/' + config.ncaamb.year + '/' + config.ncaamb.season + '/schedule' + END_URL;
 }
 
 function createTournamentScheduleUrl(tournament_id) {
-
-  // URL should look like: http://api.sportsdatallc.org/ncaamb-[access_level][version]/tournaments/[tournament]/summary.xml?api_key=[your_api_key]
-  return 'http://api.sportsdatallc.org/ncaamb-'
-    + config.ncaamb.access_level
-    + config.ncaamb.version
-    + '/tournaments/'
-    + tournament_id
-    + '/schedule.xml?api_key='
-    + config.ncaamb.apikey;
+  // tournaments/[tournament]/summary
+  return BEGIN_URL + 'tournaments/' + tournament_id + '/schedule' + END_URL;
 }
 
 function createSeasonalStatsUrl(teamID) {
-  // URL should look like: http://api.sportsdatallc.org/ncaamb-[access_level][version]/seasontd/[season]/[ncaamb_season]/teams/[teamID]/statistics.xml?api_key=[your_api_key]
-  return 'http://api.sportsdatallc.org/ncaamb-'
-    + config.ncaamb.access_level
-    + config.ncaamb.version
-    + '/seasontd/'
-    + config.ncaamb.year
-    + '/'
-    + config.ncaamb.season
-    + '/teams/'
-    + teamID
-    + '/statistics.xml?api_key='
-    + config.ncaamb.apikey;
+  // seasontd/[season]/[ncaamb_season]/teams/[teamID]/statistics
+  return BEGIN_URL + 'seasontd/' + config.ncaamb.year + '/' + config.ncaamb.season + '/teams/' + teamID + '/statistics' + END_URL;
 }
 
 function createLeagueHierarchyUrl() {
-    // URL should look like: http://api.sportsdatallc.org/ncaamb-[access_level][version]/league/hierarchy.xml?api_key=[your_api_key]
-  return 'http://api.sportsdatallc.org/ncaamb-'
-    + config.ncaamb.access_level
-    + config.ncaamb.version
-    + '/league/hierarchy.xml?api_key='
-    + config.ncaamb.apikey;
+  // league/hierarchy 
+  return BEGIN_URL + 'league/hierarchy' + END_URL;
 }
 
 function createRankingsUrl() {
-  // URL should look like:  http://api.sportsdatallc.org/ncaamb-[access_level][version]/polls/rpi/[ncaamb_season]/rankings.xml?api_key=[your_api_key]
-  return 'http://api.sportsdatallc.org/ncaamb-'
-      + config.ncaamb.access_level
-      + config.ncaamb.version
-      + '/polls/rpi/'
-      + config.ncaamb.year
-      + '/rankings.xml?api_key='
-      + config.ncaamb.apikey;
+  // polls/rpi/[ncaamb_season]/rankings 
+  return BEGIN_URL + 'polls/rpi/' + config.ncaamb.year + '/rankings' + END_URL;
 }
 
 function createStandingsUrl() {
-  // URL should look like: http://api.sportsdatallc.org/ncaamb-[access_level][version]/seasontd/[season]/[ncaamb_season]/standings.xml?api_key=[your_api_key]
-  return 'http://api.sportsdatallc.org/ncaamb-'
-    + config.ncaamb.access_level
-    + config.ncaamb.version
-    + '/seasontd/'
-    + config.ncaamb.year
-    + '/'
-    + config.ncaamb.season
-    + '/standings.xml?api_key='
-    + config.ncaamb.apikey;
+  // seasontd/[season]/[ncaamb_season]/standings 
+  return BEGIN_URL + 'seasontd/' + config.ncaamb.year + '/' + config.ncaamb.season + '/standings' + END_URL;
 }
 
 function createTournamentExampleUrl(fileName) {
   // URL should look like: http://developer.sportsdatallc.com/files/[fileName].xml
-  return 'http://developer.sportsdatallc.com/files/'
-    + fileName
-    + '.xml';
+  return 'http://developer.sportsdatallc.com/files/' + fileName + '.xml';
 }
 
 module.exports = {
-
   getSeasonScheduleUrl: function () {
     return createSeasonScheduleUrl();
   },
-
   getDailyScheduleUrl: function (year, month, day) {
     return createDailyScheduleUrl(year, month, day);
   },
-
   getBoxScoreUrl: function (gameID) {
     return createBoxScoreUrl(gameID);
   },
-
   getGameSummaryUrl: function (gameID) {
     return createGameSummaryUrl(gameID);
   },
-
   getTournamentListUrl: function () {
     return createTournamentListUrl();
   },
-
   getTournamentScheduleUrl: function (tournament_id) {
     return createTournamentScheduleUrl(tournament_id);
   },
-
   getSeasonalStatsUrl: function(teamID){
     return createSeasonalStatsUrl(teamID);
   },
-
   getLeagueHierarchyUrl: function(){
     return createLeagueHierarchyUrl();
   },
-
   getRankingsUrl: function(){
     return createRankingsUrl();
   },
-
   getStandingsUrl: function(){
     return createStandingsUrl();
   },
