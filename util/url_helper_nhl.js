@@ -50,12 +50,12 @@ function createLeagueHierarchyUrl() {
 
 function createRosterUrl(teamId) {
   // teams/[team_id]/profile
-  return BEGIN_URL + 'teams/'+ teamId + '/profile' + END_URL;
+  return BEGIN_URL + 'teams/' + teamId + '/profile' + END_URL;
 }
 
 function createPlayerProfileUrl(playerId) {
   // players/[player_id]/profile
-  return BEGIN_URL + 'players/'+ playerId + '/profile' + END_URL;
+  return BEGIN_URL + 'players/' + playerId + '/profile' + END_URL;
 }
 
 function createInjuriesUrl() {
@@ -80,12 +80,12 @@ function createSeasonalStatsUrl(teamId) {
 
 function createDailyChangeLogUrl(year, month, day) {
   // league/[year]/[month]/[day]/changes
-  return BEGIN_URL + 'league/' + year + '/' + month + '/' + day '/changes' + END_URL;
+  return BEGIN_URL + 'league/' + year + '/' + month + '/' + day + '/changes' + END_URL;
 }
 
 function createDailyTransfersUrl(year, month, day) {
   // league/[year]/[month]/[day]/transfers
-  return BEGIN_URL + 'league/' + year + '/' + month + '/' + day '/transfers' + END_URL;
+  return BEGIN_URL + 'league/' + year + '/' + month + '/' + day + '/transfers' + END_URL;
 }
 
 module.exports = {
