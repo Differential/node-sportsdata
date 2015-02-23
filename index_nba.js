@@ -59,6 +59,10 @@ function getSeasonalStats(teamID, callback) {
 }
 
 function createRequest(url, callback) {
+  var begin_url = 'http://api.sportsdatallc.org/nba-' + config.nba.access_level + config.nba.version + '/';
+  var end_url = '.' + config.nba.format + '?api_key=' + config.nba.apikey;
+  url = begin_url + url + end_url
+  
   request(url, function (error, response, body) {
     if (!error && response.statusCode == 200) {
       // Parse the XML to JSON

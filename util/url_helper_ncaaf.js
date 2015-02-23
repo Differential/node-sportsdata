@@ -6,30 +6,24 @@
 // config.ncaaf.format
 var config = require('../config');
 
-// http(s)://api.sportsdatallc.org/ncaaf-[access_level][version]/
-var BEGIN_URL = 'http://api.sportsdatallc.org/ncaaf-' + config.ncaaf.access_level + config.ncaaf.version + '/';
-
-// .[format]?api_key=[your_api_key]
-var END_URL = '.' + config.ncaaf.format + '?api_key=' + config.ncaaf.apikey;
-
 function createUrlWithEndpointAndYear(endpoint) {
-  return BEGIN_URL + config.ncaaf.year + '/' + config.ncaaf.season + '/' + endpoint + END_URL;
+  return config.ncaaf.year + '/' + config.ncaaf.season + '/' + endpoint;
 }
 
 function createUrlWithEndpointAndWeekAndYear(week, endpoint) {
-  return BEGIN_URL + config.ncaaf.year + '/' + config.ncaaf.season + '/' + week + '/' + endpoint + END_URL;
+  return config.ncaaf.year + '/' + config.ncaaf.season + '/' + week + '/' + endpoint;
 }
 
 function createUrlWithEndpointAndDivision(division, endpoint) {
-  return BEGIN_URL + 'teams/' + division + '/' + endpoint + END_URL;
+  return 'teams/' + division + '/' + endpoint;
 }
 
 function createUrlWithEndpointAndDivisionAndYear(division, endpoint) {
-  return BEGIN_URL + 'teams/' + division + '/' + config.ncaaf.year + '/' + config.ncaaf.season + '/' + endpoint + END_URL;
+  return 'teams/' + division + '/' + config.ncaaf.year + '/' + config.ncaaf.season + '/' + endpoint;
 }
 
 function createUrlWithEndpointAndWeekAndTeamsAndYear(week, awayteam, hometeam, endpoint) {
-  return BEGIN_URL + config.ncaaf.year + '/' + config.ncaaf.season + '/' + week + '/' + awayteam + '/' + hometeam + '/' + endpoint + END_URL;
+  return config.ncaaf.year + '/' + config.ncaaf.season + '/' + week + '/' + awayteam + '/' + hometeam + '/' + endpoint;
 }
 
 function createSeasonScheduleUrl() {

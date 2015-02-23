@@ -104,6 +104,10 @@ function getSeasonalStats(team, callback) {
 }
 
 function createRequest(url, callback) {
+  var begin_url = 'http://api.sportsdatallc.org/nfl-' + config.nfl.access_level + config.nfl.version + '/';
+  var end_url = '.' + config.nfl.format + '?api_key=' + config.nfl.apikey;
+  url = begin_url + url + end_url
+  
   request(url, function (error, response, body) {
     if (!error && response.statusCode == 200) {
       // Parse the XML to JSON

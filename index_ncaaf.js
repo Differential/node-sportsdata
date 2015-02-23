@@ -48,6 +48,10 @@ function getTeamHierarchy(division, callback) {
 }
 
 function createRequest(url, callback) {
+  var begin_url = 'http://api.sportsdatallc.org/ncaaf-' + config.ncaaf.access_level + config.ncaaf.version + '/';
+  var end_url = '.' + config.ncaaf.format + '?api_key=' + config.ncaaf.apikey;
+  url = begin_url + url + end_url
+  
   request(url, function (error, response, body) {
     if (!error && response.statusCode == 200) {
       // Parse the XML to JSON

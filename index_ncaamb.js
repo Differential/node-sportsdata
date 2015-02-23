@@ -69,6 +69,10 @@ function getTournamentExample(fileName, callback) {
 }
 
 function createRequest(url, callback) {
+  var begin_url = 'http://api.sportsdatallc.org/ncaamb-' + config.ncaamb.access_level + config.ncaamb.version + '/';
+  var end_url = '.' + config.ncaamb.format + '?api_key=' + config.ncaamb.apikey;
+  url = begin_url + url + end_url
+  
   request(url, function (error, response, body) {
     if (!error && response.statusCode == 200) {
       // Parse the XML to JSON

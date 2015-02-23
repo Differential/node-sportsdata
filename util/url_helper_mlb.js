@@ -6,115 +6,109 @@
 // config.mlb.format
 var config = require('../config');
 
-// http(s)://api.sportsdatallc.org/mlb-[access_level][version]/
-var BEGIN_URL = 'http://api.sportsdatallc.org/mlb-' + config.mlb.access_level + config.mlb.version + '/';
-
-// .[format]?api_key=[your_api_key]
-var END_URL = '.' + config.mlb.format + '?api_key=' + config.mlb.apikey;
-
 function createDailyBoxscoreUrl(year, month, day) {
   // games/[year]/[month]/[day]/boxscore
-  return BEGIN_URL + 'games/' + year + '/' + month + '/' + day + '/boxscore' + END_URL;
+  return 'games/' + year + '/' + month + '/' + day + '/boxscore';
 }
 
 function createDailyChangeLogUrl(year, month, day) {
   // games/[year]/[month]/[day]/changes
-  return BEGIN_URL + 'games/' + year + '/' + month + '/' + day + '/changes' + END_URL;
+  return 'games/' + year + '/' + month + '/' + day + '/changes';
 }
 
 function createDailyScheduleUrl(year, month, day) {
   // games/[year]/[month]/[day]/schedule
-  return BEGIN_URL + 'games/' + year + '/' + month + '/' + day + '/schedule' + END_URL;
+  return 'games/' + year + '/' + month + '/' + day + '/schedule';
 }
 
 function createDailySummaryUrl(year, month, day) {
   // games/[year]/[month]/[day]/summary
-  return BEGIN_URL + 'games/' + year + '/' + month + '/' + day + '/summary' + END_URL;
+  return 'games/' + year + '/' + month + '/' + day + '/summary';
 }
 
 function createGameBoxScoreUrl(eventId){
   // games/[event_id]/boxscore
-  return BEGIN_URL + 'games/' + eventId + '/boxscore' + END_URL;
+  return 'games/' + eventId + '/boxscore';
 }
 
 function createGameSummaryUrl(eventId){
   // games/[event_id]/summary
-  return BEGIN_URL + 'games/' + eventId + '/summary' + END_URL;
+  return 'games/' + eventId + '/summary';
 }
 
 function createGlossaryUrl(){
   // league/glossary
-  return BEGIN_URL + 'league/glossary' + END_URL;
+  return 'league/glossary';
 }
 
 function createLeagueDepthChartUrl(){
   // league/depth_charts
-  return BEGIN_URL + 'league/depth_charts' + END_URL;
+  return 'league/depth_charts';
 }
 
 function createTeamHierarchyUrl(){
   // league/hierarchy
-  return BEGIN_URL + 'league/hierarchy' + END_URL;
+  return 'league/hierarchy';
 }
 
 function createLeagueLeadersUrl(){
   // seasontd/[year]/[mlb_season]/leaders/statistics
-  return BEGIN_URL + 'seasontd/' + config.mlb.year + config.mlb.season + '/leaders/statistics' + END_URL;
+  return 'seasontd/' + config.mlb.year + config.mlb.season + '/leaders/statistics';
 }
 
 function createLeagueScheduleUrl(){
   // games/[year]/[mlb_season]/schedule
-  return BEGIN_URL + 'games/' + config.mlb.year + '/' + config.mlb.season + '/schedule' + END_URL;
+  return 'games/' + config.mlb.year + '/' + config.mlb.season + '/schedule';
 }
 
 function createPlayByPlayUrl(eventId){
   // games/[event_id]/pbp
-  return BEGIN_URL + 'games/' + eventId + '/pbp' + END_URL;
+  return 'games/' + eventId + '/pbp';
 }
 
 function createPlayerProfileUrl(playerId){
   // players/[player_id]/profile
-  return BEGIN_URL + 'players/' + playerId + '/profile' + END_URL;
+  return 'players/' + playerId + '/profile';
 }
 
 function createRankingsUrl(){
   // seasontd/[year]/[mlb_season]/rankings
-  return BEGIN_URL + 'seasontd/' + config.mlb.year + '/' + config.mlb.season + '/rankings' + END_URL;
+  return 'seasontd/' + config.mlb.year + '/' + config.mlb.season + '/rankings';
 }
 
 function createSeasonalSplitsUrl(){
   // seasontd/[year]/[mlb_season]/teams/[team_id]/splits
-  return BEGIN_URL + 'seasontd/' + config.mlb.year + '/' + config.mlb.season + '/teams/' + teamId + '/splits' + END_URL;
+  return 'seasontd/' + config.mlb.year + '/' + config.mlb.season + '/teams/' + teamId + '/splits';
 }
 
 function createSeasonalStatsUrl(){
   // seasontd/[year]/[mlb_season]/teams/[team_id]/statistics
-  return BEGIN_URL + 'seasontd/' + config.mlb.year + '/' + config.mlb.season + '/teams/' + teamId + '/statistics' + END_URL;
+  return 'seasontd/' + config.mlb.year + '/' + config.mlb.season + '/teams/' + teamId + '/statistics';
 }
 
 function createStandingsUrl(){
   // seasontd/[year]/[mlb_season]/standings
-  return BEGIN_URL + 'seasontd/' + config.mlb.year + '/' + config.mlb.season + '/standings' + END_URL;
+  return 'seasontd/' + config.mlb.year + '/' + config.mlb.season + '/standings';
 }
 
 function createTeamDepthChartUrl(teamId){
   // teams/[team_id]/depth_chart
-  return BEGIN_URL + 'teams/' + teamId + '/depth_chart' + END_URL;
+  return 'teams/' + teamId + '/depth_chart';
 }
 
 function createTeamProfileUrl(teamId){
   // teams/[team_id]/depth_chart
-  return BEGIN_URL + 'teams/' + teamId + '/profile' + END_URL;
+  return 'teams/' + teamId + '/profile';
 }
 
 function createActiveTeamRosterUrl(){
   // league/active_rosters
-  return BEGIN_URL + 'league/active_rosters' + END_URL;
+  return 'league/active_rosters';
 }
 
 function createFullTeamRosterUrl(){
   // league/full_rosters
-  return BEGIN_URL + 'league/full_rosters' + END_URL;
+  return 'league/full_rosters';
 }
 
 module.exports = {

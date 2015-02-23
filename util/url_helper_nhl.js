@@ -7,85 +7,79 @@
 
 var config = require('../config');
 
-// http(s)://api.sportsdatallc.org/nhl-[access_level][version]/
-var BEGIN_URL = 'http://api.sportsdatallc.org/nhl-' + config.nhl.access_level + config.nhl.version + '/';
-
-// .[format]?api_key=[your_api_key]
-var END_URL = '.' + config.nhl.format + '?api_key=' + config.nhl.apikey;
-
 function createSeasonScheduleUrl() {
   // games/[season]/[nhl_season]/schedule
-  return BEGIN_URL + 'games/' + config.nhl.seasonID + '/' + config.nhl.season + '/schedule' + END_URL;
+  return 'games/' + config.nhl.seasonID + '/' + config.nhl.season + '/schedule';
 }
 
 function createDailyScheduleUrl(year, month, day) {
   // games/[year]/[month]/[day]/schedule
-  return BEGIN_URL + 'games/' + year + '/' + month + '/' + day + '/schedule' + END_URL;
+  return 'games/' + year + '/' + month + '/' + day + '/schedule';
 }
 
 function createSeriesScheduleUrl() {
   // series/[season]/[nhl_season]/schedule
-  return BEGIN_URL + 'series/' + config.nhl.seasonID + '/' + config.nhl.season + '/schedule' + END_URL;
+  return 'series/' + config.nhl.seasonID + '/' + config.nhl.season + '/schedule';
 }
 
 function createGameBoxScoreUrl(gameId) {
   // games/[game_id]/boxscore
-  return BEGIN_URL + 'games/' + gameId + '/schedule' + END_URL;
+  return 'games/' + gameId + '/schedule';
 }
 
 function createStandingsUrl() {
   // seasontd/[season]/[nhl_season]/standings
-  return BEGIN_URL + 'seasontd/' + config.nhl.seasonID + '/' + config.nhl.season + '/standings' + END_URL;
+  return 'seasontd/' + config.nhl.seasonID + '/' + config.nhl.season + '/standings';
 }
 
 function createRankingsUrl() {
   // seasontd/[season]/[nhl_season]/rankings
-  return BEGIN_URL + 'seasontd/' + config.nhl.seasonID + '/' + config.nhl.season + '/rankings' + END_URL;
+  return 'seasontd/' + config.nhl.seasonID + '/' + config.nhl.season + '/rankings';
 }
 
 function createLeagueHierarchyUrl() {
   // league/hierarchy
-  return BEGIN_URL + 'league/hierarchy' + END_URL;
+  return 'league/hierarchy';
 }
 
 function createRosterUrl(teamId) {
   // teams/[team_id]/profile
-  return BEGIN_URL + 'teams/' + teamId + '/profile' + END_URL;
+  return 'teams/' + teamId + '/profile';
 }
 
 function createPlayerProfileUrl(playerId) {
   // players/[player_id]/profile
-  return BEGIN_URL + 'players/' + playerId + '/profile' + END_URL;
+  return 'players/' + playerId + '/profile';
 }
 
 function createInjuriesUrl() {
   // league/injuries
-  return BEGIN_URL + 'league/injuries' + END_URL;
+  return 'league/injuries';
 }
 
 function createGameSummaryUrl(gameId) {
   // games/[game_id]/summary
-  return BEGIN_URL + 'games/' + gameId + '/summary' + END_URL;
+  return 'games/' + gameId + '/summary';
 }
 
 function createPlayByPlayUrl(gameId) {
   // games/[game_id]/pbp
-  return BEGIN_URL + 'games/' + gameId + '/pbp' + END_URL;
+  return 'games/' + gameId + '/pbp';
 }
 
 function createSeasonalStatsUrl(teamId) {
   // teams/[team_id]/statistics
-  return BEGIN_URL + 'teams/' + teamId + '/statistics' + END_URL;
+  return 'teams/' + teamId + '/statistics';
 }
 
 function createDailyChangeLogUrl(year, month, day) {
   // league/[year]/[month]/[day]/changes
-  return BEGIN_URL + 'league/' + year + '/' + month + '/' + day + '/changes' + END_URL;
+  return 'league/' + year + '/' + month + '/' + day + '/changes';
 }
 
 function createDailyTransfersUrl(year, month, day) {
   // league/[year]/[month]/[day]/transfers
-  return BEGIN_URL + 'league/' + year + '/' + month + '/' + day + '/transfers' + END_URL;
+  return 'league/' + year + '/' + month + '/' + day + '/transfers';
 }
 
 module.exports = {

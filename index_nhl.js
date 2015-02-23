@@ -13,6 +13,10 @@ function init(access_level, version, apikey, seasonID, season) {
   config.nhl.format = 'xml';
 }
 function createRequest(url, callback) {
+  var begin_url = 'http://api.sportsdatallc.org/nhl-' + config.nhl.access_level + config.nhl.version + '/';
+  var end_url = '.' + config.nhl.format + '?api_key=' + config.nhl.apikey;
+  url = begin_url + url + end_url
+  
   request(url, function (error, response, body) {
     if (!error && response.statusCode == 200) {
       // Parse the XML to JSON
