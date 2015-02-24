@@ -113,7 +113,7 @@ function createFullTeamRosterUrl(){
 
 module.exports = {
   getDailyBoxscoreUrl: function(year, month, day) {
-      return createDailyChangeLog(year, month, day);
+    return createDailyBoxscoreUrl(year, month, day);
   },
   getDailyChangeLogUrl: function(year, month, day) {
     return createDailyChangeLogUrl(year, month, day);

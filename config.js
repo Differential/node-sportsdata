@@ -48,4 +48,12 @@ config.ncaaf.apikey = '';
 config.ncaaf.year = '2014';
 config.ncaaf.format = 'xml';
 
+config.golf = {};
+config.golf.access_level = 't';
+config.golf.version = '1';
+config.golf.tour = 'pga';
+config.golf.apikey = '';
+config.golf.year = '2015';
+config.golf.format = 'xml';
+
 module.exports = config;
