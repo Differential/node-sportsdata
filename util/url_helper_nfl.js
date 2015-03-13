@@ -63,7 +63,7 @@ function createTeamHierarchyUrl() {
 
 function createTeamRosterUrl(team) {
   // teams/[team]/roster
-  return '/teams/' + team + '/roster';
+  return 'teams/' + team + '/roster';
 }
 
 function createInjuriesUrl(week, awayteam, hometeam) {
@@ -78,7 +78,7 @@ function createGameDepthChartUrl(week, awayteam, hometeam) {
 
 function createTeamDepthChartUrl(team) {
   // teams/[team]/depthchart
-  return '/teams/' + team + '/depthchart';
+  return 'teams/' + team + '/depthchart';
 }
 
 function createWeeklyLeagueLeadersUrl(week) {
