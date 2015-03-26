@@ -15,7 +15,7 @@ function createRequest(url, callback) {
   var begin_url = 'http://api.sportsdatallc.org/mlb-' + config.mlb.access_level + config.mlb.version + '/';
   var end_url = '.' + config.mlb.format + '?api_key=' + config.mlb.apikey;
   url = begin_url + url + end_url
-  
+
   request(url, function (error, response, body) {
     if (!error && response.statusCode == 200) {
       // Parse the XML to JSON
@@ -57,10 +57,6 @@ function getGlossary(callback) {
 }
 function getLeagueDepthChart(callback) {
   var url = urlHelper.getLeagueDepthChartUrl();
-  createRequest(url, callback);
-}
-function getTeamHierarchy(callback) {
-  var url = urlHelper.getTeamHierarchyUrl();
   createRequest(url, callback);
 }
 function getTeamHierarchy(callback) {
