@@ -4,8 +4,9 @@ var config = require('./config'),
     parser = new xml2js.Parser(),
     urlHelper = require('./util/url_helper_mlb');
 
-function init(access_level, version, apikey, year) {
+function init(access_level, version, apikey, year, season) {
   config.mlb.access_level = access_level;
+  config.mlb.season = season;
   config.mlb.version = version;
   config.mlb.apikey = apikey;
   config.mlb.year = year;
