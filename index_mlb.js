@@ -4,35 +4,21 @@ var config = require('./config'),
     parser = new xml2js.Parser(),
     urlHelper = require('./util/url_helper_mlb');
 
-function init(access_level, version, apikey, year, season, f) {
+function init(access_level, version, apikey, year, season) {
   config.mlb.access_level = access_level;
   config.mlb.season = season;
   config.mlb.version = version;
   config.mlb.apikey = apikey;
   config.mlb.year = year;
-  config.mlb.format = f;
-  console.log(config.mlb.format);
-  console.log(f);
+  }
 }
 function createRequest(url, callback) {
   var begin_url = 'http://api.sportsdatallc.org/mlb-' + config.mlb.access_level + config.mlb.version + '/';
-  var end_url = '.' + config.mlb.format + '?api_key=' + config.mlb.apikey;
-  url = begin_url + url + end_url;
-  console.log(url);
-  request(url, function (error, response, body) {
-    callback('', body);
-    // if (!error && response.statusCode == 200) {
-      // Parse the XML to JSON
-      // if (config.mlb.format == 'json') {
-      // } else {
-      //   parser.parseString(body, function (err, result) {
-      //     callback(err, result);
-      //   });
-      // }
+  var end_url = '.json?api_key=' + config.mlb.apikey;
+  url = begin_url + url + end_url
 
-    // } else {
-    //   callback(error, body);
-    // }
+  request(url, function (error, response, body) {
+    callback(error, body);
   });
 }
 function getDailyBoxscore(year, month, day, callback) {
