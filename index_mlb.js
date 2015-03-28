@@ -17,7 +17,7 @@ function createRequest(url, callback) {
   url = begin_url + url + end_url
 
   request(url, function (error, response, body) {
-    callback(error, body);
+    callback(error, JSON.parse(body));
   });
 }
 function getDailyBoxscore(year, month, day, callback) {
