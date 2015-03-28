@@ -20,9 +20,15 @@ function createRequest(url, callback) {
   request(url, function (error, response, body) {
     if (!error && response.statusCode == 200) {
       // Parse the XML to JSON
-      parser.parseString(body, function (err, result) {
-        callback(err, result);
-      });
+      if (config.mlb.format == 'json') {
+        callback(error, body);
+
+      } else {
+        parser.parseString(body, function (err, result) {
+          callback(err, result);
+        });
+      }
+
     } else {
       callback(error, body);
     }
