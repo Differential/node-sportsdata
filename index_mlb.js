@@ -16,7 +16,7 @@ function createRequest(url, callback) {
   var begin_url = 'http://api.sportsdatallc.org/mlb-' + config.mlb.access_level + config.mlb.version + '/';
   var end_url = '.' + config.mlb.format + '?api_key=' + config.mlb.apikey;
   url = begin_url + url + end_url;
-
+  console.log(url);
   request(url, function (error, response, body) {
     callback('', body);
     // if (!error && response.statusCode == 200) {
