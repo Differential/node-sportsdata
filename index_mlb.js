@@ -15,23 +15,22 @@ function init(access_level, version, apikey, year, season, format) {
 function createRequest(url, callback) {
   var begin_url = 'http://api.sportsdatallc.org/mlb-' + config.mlb.access_level + config.mlb.version + '/';
   var end_url = '.' + config.mlb.format + '?api_key=' + config.mlb.apikey;
-  url = begin_url + url + end_url
+  url = begin_url + url + end_url;
 
   request(url, function (error, response, body) {
+    callback('', body);
     if (!error && response.statusCode == 200) {
       // Parse the XML to JSON
       // if (config.mlb.format == 'json') {
-      callback('', body);
-
       // } else {
       //   parser.parseString(body, function (err, result) {
       //     callback(err, result);
       //   });
       // }
 
-    } else {
-      callback(error, body);
-    }
+    // } else {
+    //   callback(error, body);
+    // }
   });
 }
 function getDailyBoxscore(year, month, day, callback) {
