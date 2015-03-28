@@ -4,13 +4,15 @@ var config = require('./config'),
     parser = new xml2js.Parser(),
     urlHelper = require('./util/url_helper_mlb');
 
-function init(access_level, version, apikey, year, season) {
+function init(access_level, version, apikey, year, season, format) {
   config.mlb.access_level = access_level;
   config.mlb.season = season;
   config.mlb.version = version;
   config.mlb.apikey = apikey;
   config.mlb.year = year;
-  config.mlb.format = 'xml';
+  if (format) {
+    config.mlb.format = format;
+  }
 }
 function createRequest(url, callback) {
   var begin_url = 'http://api.sportsdatallc.org/mlb-' + config.mlb.access_level + config.mlb.version + '/';
