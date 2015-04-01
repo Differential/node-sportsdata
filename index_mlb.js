@@ -10,19 +10,11 @@ function init(access_level, version, apikey, year, season) {
   config.mlb.version = version;
   config.mlb.apikey = apikey;
   config.mlb.year = year;
-
-  console.log(access_level, config.mlb.access_level);
-  console.log(season, config.mlb.season);
-  console.log(version, config.mlb.version);
-  console.log(apikey, config.mlb.apikey);
-  console.log(year, config.mlb.year);
-
 }
 function createRequest(url, callback) {
   var begin_url = 'http://api.sportsdatallc.org/mlb-' + config.mlb.access_level + config.mlb.version + '/';
   var end_url = '.json?api_key=' + config.mlb.apikey;
   url = begin_url + url + end_url;
-  console.log(url);
 
   request(url, function (error, response, body) {
     callback(error, JSON.parse(body));
@@ -114,8 +106,8 @@ function getFullTeamRoster(callback) {
 }
 
 module.exports = {
-  init: function(access_level, version, apikey, year) {
-    return init(access_level, version, apikey, year);
+  init: function(access_level, version, apikey, year, season) {
+    return init(access_level, version, apikey, year, season);
   },
   setRequest: function(reqObj) {
     request = reqObj;
