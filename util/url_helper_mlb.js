@@ -58,6 +58,7 @@ function createLeagueLeadersUrl(){
 
 function createLeagueScheduleUrl(){
   // games/[year]/[mlb_season]/schedule
+  console.log(config.mlb.year, config.mlb.season);
   return 'games/' + config.mlb.year + '/' + config.mlb.season + '/schedule';
 }
 
