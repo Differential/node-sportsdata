@@ -76,12 +76,12 @@ function createRankingsUrl(){
   return 'seasontd/' + config.mlb.year + '/' + config.mlb.season + '/rankings';
 }
 
-function createSeasonalSplitsUrl(){
+function createSeasonalSplitsUrl(teamId){
   // seasontd/[year]/[mlb_season]/teams/[team_id]/splits
   return 'seasontd/' + config.mlb.year + '/' + config.mlb.season + '/teams/' + teamId + '/splits';
 }
 
-function createSeasonalStatsUrl(){
+function createSeasonalStatsUrl(teamId){
   // seasontd/[year]/[mlb_season]/teams/[team_id]/statistics
   return 'seasontd/' + config.mlb.year + '/' + config.mlb.season + '/teams/' + teamId + '/statistics';
 }
@@ -154,11 +154,11 @@ module.exports = {
   getRankingsUrl: function(){
     return createRankingsUrl();
   },
-  getSeasonalSplitsUrl: function(){
-    return createSeasonalSplitsUrl();
+  getSeasonalSplitsUrl: function(teamId){
+    return createSeasonalSplitsUrl(teamId);
   },
-  getSeasonalStatsUrl: function(){
-    return createSeasonalStatsUrl();
+  getSeasonalStatsUrl: function(teamId){
+    return createSeasonalStatsUrl(teamId);
   },
   getStandingsUrl: function(){
     return createStandingsUrl();

@@ -76,12 +76,12 @@ function getRankings(callback) {
   var url = urlHelper.getRankingsUrl();
   createRequest(url, callback);
 }
-function getSeasonalSplits(callback) {
-  var url = urlHelper.getSeasonalSplitsUrl();
+function getSeasonalSplits(teamId, callback) {
+  var url = urlHelper.getSeasonalSplitsUrl(teamId);
   createRequest(url, callback);
 }
-function getSeasonalStats(callback) {
-  var url = urlHelper.getSeasonalStatsUrl();
+function getSeasonalStats(teamId, callback) {
+  var url = urlHelper.getSeasonalStatsUrl(teamId);
   createRequest(url, callback);
 }
 function getStandings(callback) {
@@ -154,11 +154,11 @@ module.exports = {
   getRankings: function(callback){
     return getRankings(callback);
   },
-  getSeasonalSplits: function(callback){
-    return getSeasonalSplits(callback);
+  getSeasonalSplits: function(teamId, callback){
+    return getSeasonalSplits(teamId, callback);
   },
-  getSeasonalStats: function(callback){
-    return getSeasonalStats(callback);
+  getSeasonalStats: function(teamId, callback){
+    return getSeasonalStats(teamId, callback);
   },
   getStandings: function(callback){
     return getStandings(callback);
