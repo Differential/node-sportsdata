@@ -26,6 +26,7 @@ function createRequest(url, callback) {
     if (config.mlb.format == 'JSON') {
       try {
         body = JSON.parse(body);
+        console.log(body);
       } catch (e) {
         console.log(e);
       }
@@ -37,6 +38,8 @@ function createRequest(url, callback) {
         });
       }
     }
+    console.log(url);
+    console.log(body);
     callback(error, body);
   });
 }
