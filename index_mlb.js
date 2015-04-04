@@ -12,21 +12,19 @@ function init(access_level, version, apikey, year, season, format) {
   config.mlb.year = year;
   if (format) {
     config.mlb.format = format;
-  } else {
-    config.mlb.format = "JSON";
   }
 }
 function createRequest(url, callback) {
   var begin_url = 'http://api.sportsdatallc.org/mlb-' + config.mlb.access_level + config.mlb.version + '/';
-  console.log(config.mlb.format);
   var end_url = '.' + config.mlb.format + '?api_key=' + config.mlb.apikey;
   url = begin_url + url + end_url;
 
   request(url, function (error, response, body) {
-    if (config.mlb.format == 'JSON') {
+    if (config.mlb.format == 'json') {
       try {
-        body = JSON.parse(body);
-        console.log(body);
+        if JSON.parse(body) {
+          body = JSON.parse(body);
+        }
       } catch (e) {
         console.log(e);
       }
@@ -38,8 +36,6 @@ function createRequest(url, callback) {
         });
       }
     }
-    console.log(url);
-    console.log(body);
     callback(error, body);
   });
 }

@@ -22,7 +22,7 @@ config.mlb.version = '5';
 config.mlb.apikey = '';
 config.mlb.year = '2015';
 config.mlb.season = 'REG';
-config.mlb.format = 'JSON';
+config.mlb.format = 'json';
 
 config.nhl = {};
 config.nhl.access_level = 't';
