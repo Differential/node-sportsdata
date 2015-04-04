@@ -4,20 +4,37 @@ var config = require('./config'),
     parser = new xml2js.Parser(),
     urlHelper = require('./util/url_helper_mlb');
 
-function init(access_level, version, apikey, year, season) {
+function init(access_level, version, apikey, year, season, format) {
   config.mlb.access_level = access_level;
   config.mlb.season = season;
   config.mlb.version = version;
   config.mlb.apikey = apikey;
   config.mlb.year = year;
+  if format {
+    config.mlb.format = format;
+  }
 }
 function createRequest(url, callback) {
   var begin_url = 'http://api.sportsdatallc.org/mlb-' + config.mlb.access_level + config.mlb.version + '/';
-  var end_url = '.json?api_key=' + config.mlb.apikey;
+  var end_url = '.' + config.mlb.format + '?api_key=' + config.mlb.apikey;
   url = begin_url + url + end_url;
 
   request(url, function (error, response, body) {
-    callback(error, JSON.parse(body));
+    if (config.mlb.format == 'JSON') {
+      try {
+        body = JSON.parse(body);
+      } catch (e) {
+        console.log(e);
+      }
+    } else {
+      if (!error && response.statusCode == 200) {
+        // Parse the XML to JSON
+        parser.parseString(body, function (err, result) {
+          body = result;
+        });
+      }
+    }
+    callback(error, body);
   });
 }
 function getDailyBoxscore(year, month, day, callback) {
@@ -106,8 +123,8 @@ function getFullTeamRoster(callback) {
 }
 
 module.exports = {
-  init: function(access_level, version, apikey, year, season) {
-    return init(access_level, version, apikey, year, season);
+  init: function(access_level, version, apikey, year, season, format) {
+    return init(access_level, version, apikey, year, season, format);
   },
   setRequest: function(reqObj) {
     request = reqObj;
