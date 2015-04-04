@@ -10,7 +10,7 @@ function init(access_level, version, apikey, year, season, format) {
   config.mlb.version = version;
   config.mlb.apikey = apikey;
   config.mlb.year = year;
-  if format {
+  if (format) {
     config.mlb.format = format;
   }
 }
