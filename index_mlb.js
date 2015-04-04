@@ -12,10 +12,13 @@ function init(access_level, version, apikey, year, season, format) {
   config.mlb.year = year;
   if (format) {
     config.mlb.format = format;
+  } else {
+    config.mlb.format = "JSON";
   }
 }
 function createRequest(url, callback) {
   var begin_url = 'http://api.sportsdatallc.org/mlb-' + config.mlb.access_level + config.mlb.version + '/';
+  console.log(config.mlb.format);
   var end_url = '.' + config.mlb.format + '?api_key=' + config.mlb.apikey;
   url = begin_url + url + end_url;
 
