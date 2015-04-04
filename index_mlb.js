@@ -22,11 +22,10 @@ function createRequest(url, callback) {
   request(url, function (error, response, body) {
     if (config.mlb.format == 'json') {
       try {
-        if JSON.parse(body) {
-          body = JSON.parse(body);
-        }
+        body = JSON.parse(body);
       } catch (e) {
         console.log(e);
+        error = e;
       }
     } else {
       if (!error && response.statusCode == 200) {
