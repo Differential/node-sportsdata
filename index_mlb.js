@@ -5,8 +5,6 @@ var config = require('./config'),
     urlHelper = require('./util/url_helper_mlb');
 
 function init(access_level, version, apikey, year, season, format) {
-  console.log(access_level, version, apikey, year, season, format);
-
   config.mlb.access_level = access_level;
   config.mlb.season = season;
   config.mlb.version = version;
@@ -20,7 +18,6 @@ function createRequest(url, callback) {
   var begin_url = 'http://api.sportsdatallc.org/mlb-' + config.mlb.access_level + config.mlb.version + '/';
   var end_url = '.' + config.mlb.format + '?api_key=' + config.mlb.apikey;
   url = begin_url + url + end_url;
-  console.log(url);
   request(url, function (error, response, body) {
     if (config.mlb.format == 'json') {
       try {
@@ -127,7 +124,6 @@ function getFullTeamRoster(callback) {
 
 module.exports = {
   init: function(access_level, version, apikey, year, season, format) {
-    console.log(access_level, version, apikey, year, season, format);
     return init(access_level, version, apikey, year, season, format);
   },
   setRequest: function(reqObj) {
