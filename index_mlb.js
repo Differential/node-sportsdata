@@ -10,6 +10,7 @@ function init(access_level, version, apikey, year, season, format) {
   config.mlb.version = version;
   config.mlb.apikey = apikey;
   config.mlb.year = year;
+  console.log(format);
   if (format) {
     config.mlb.format = format;
   }
@@ -18,7 +19,7 @@ function createRequest(url, callback) {
   var begin_url = 'http://api.sportsdatallc.org/mlb-' + config.mlb.access_level + config.mlb.version + '/';
   var end_url = '.' + config.mlb.format + '?api_key=' + config.mlb.apikey;
   url = begin_url + url + end_url;
-
+  console.log(url);
   request(url, function (error, response, body) {
     if (config.mlb.format == 'json') {
       try {
