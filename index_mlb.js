@@ -5,12 +5,13 @@ var config = require('./config'),
     urlHelper = require('./util/url_helper_mlb');
 
 function init(access_level, version, apikey, year, season, format) {
+  console.log(access_level, version, apikey, year, season, format);
+
   config.mlb.access_level = access_level;
   config.mlb.season = season;
   config.mlb.version = version;
   config.mlb.apikey = apikey;
   config.mlb.year = year;
-  console.log(format);
   if (format) {
     config.mlb.format = format;
   }
@@ -126,6 +127,7 @@ function getFullTeamRoster(callback) {
 
 module.exports = {
   init: function(access_level, version, apikey, year, season, format) {
+    console.log(access_level, version, apikey, year, season, format);
     return init(access_level, version, apikey, year, season, format);
   },
   setRequest: function(reqObj) {
