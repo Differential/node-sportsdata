@@ -7,9 +7,10 @@ var config = require('./config'),
 function init(access_level, version, apikey, year, tour, format) {
   config.golf.access_level = access_level;
   config.golf.version = version;
-  config.golf.tour = tour;
   config.golf.apikey = apikey;
   config.golf.year = year;
+  config.golf.tour = tour;
+
   if (format){
     config.golf.format = format;
   }
@@ -20,14 +21,22 @@ function createRequest(url, callback) {
   url = begin_url + url + end_url
 
   request(url, function (error, response, body) {
-    if (!error && response.statusCode == 200) {
-      // Parse the XML to JSON
-      parser.parseString(body, function (err, result) {
-        callback(err, result);
-      });
+    if (config.mlb.format == 'json') {
+      try {
+        body = JSON.parse(body);
+      } catch (e) {
+        console.log(e);
+        error = e;
+      }
     } else {
-      callback(error, body);
+      if (!error && response.statusCode == 200) {
+        // Parse the XML to JSON
+        parser.parseString(body, function (err, result) {
+          body = result;
+        });
+      }
     }
+    callback(error, body);
   });
 }
 
