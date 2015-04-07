@@ -18,10 +18,10 @@ function init(access_level, version, apikey, year, tour, format) {
 function createRequest(url, callback) {
   var begin_url = 'http://api.sportsdatallc.org/golf-' + config.golf.access_level + config.golf.version + '/';
   var end_url = '.' + config.golf.format + '?api_key=' + config.golf.apikey;
-  url = begin_url + url + end_url
-
+  url = begin_url + url + end_url;
+  console.log(url);
   request(url, function (error, response, body) {
-    if (config.mlb.format == 'json') {
+    if (config.golf.format == 'json') {
       try {
         body = JSON.parse(body);
       } catch (e) {
