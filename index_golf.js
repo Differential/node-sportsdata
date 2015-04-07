@@ -10,8 +10,9 @@ function init(access_level, version, apikey, year, tour, format) {
   config.golf.tour = tour;
   config.golf.apikey = apikey;
   config.golf.year = year;
-  if format
+  if (format){
     config.golf.format = format;
+  }
 }
 function createRequest(url, callback) {
   var begin_url = 'http://api.sportsdatallc.org/golf-' + config.golf.access_level + config.golf.version + '/';
