@@ -54,6 +54,6 @@ config.golf.version = '1';
 config.golf.tour = 'pga';
 config.golf.apikey = '';
 config.golf.year = '2015';
-config.golf.format = 'xml';
+config.golf.format = 'json';
 
 module.exports = config;

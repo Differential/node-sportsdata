@@ -4,19 +4,20 @@ var config = require('./config'),
     parser = new xml2js.Parser(),
     urlHelper = require('./util/url_helper_golf');
 
-function init(access_level, version, apikey, year, tour) {
+function init(access_level, version, apikey, year, tour, format) {
   config.golf.access_level = access_level;
   config.golf.version = version;
   config.golf.tour = tour;
   config.golf.apikey = apikey;
   config.golf.year = year;
-  config.golf.format = 'xml';
+  if format
+    config.golf.format = format;
 }
 function createRequest(url, callback) {
   var begin_url = 'http://api.sportsdatallc.org/golf-' + config.golf.access_level + config.golf.version + '/';
   var end_url = '.' + config.golf.format + '?api_key=' + config.golf.apikey;
   url = begin_url + url + end_url
-  
+
   request(url, function (error, response, body) {
     if (!error && response.statusCode == 200) {
       // Parse the XML to JSON
@@ -67,8 +68,8 @@ function getDailyChangeLog(year, month, day, callback){
 }
 
 module.exports = {
-  init: function(access_level, version, apikey, year, tour) {
-    return init(access_level, version, apikey, year, tour);
+  init: function(access_level, version, apikey, year, tour, format) {
+    return init(access_level, version, apikey, year, tour, format);
   },
   setRequest: function(reqObj) {
     request = reqObj;
