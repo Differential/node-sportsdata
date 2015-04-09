@@ -21,12 +21,13 @@ function createRequest(url, callback) {
   url = begin_url + url + end_url;
   console.log(url);
   request(url, function (error, response, body) {
+    console.log(response);
     if (config.golf.format == 'json') {
       try {
         body = JSON.parse(body);
+        console.log(body);
       } catch (e) {
         console.log(e);
-        error = e;
       }
     } else {
       if (!error && response.statusCode == 200) {
