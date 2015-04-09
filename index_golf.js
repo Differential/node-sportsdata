@@ -101,7 +101,7 @@ module.exports = {
     return getTeeTimes(tournamentId, teeType, round, callback);
   },
   getScorecards: function(tournamentId, cardType, round, callback){
-    return getTeeTimes(tournamentId, cardType, round, callback);
+    return getScorecards(tournamentId, cardType, round, callback);
   },
   getPlayerStats: function(callback){
     return getPlayerStats(callback);
