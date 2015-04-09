@@ -19,16 +19,15 @@ function createRequest(url, callback) {
   var end_url = '.' + config.mlb.format + '?api_key=' + config.mlb.apikey;
   url = begin_url + url + end_url;
   request(url, function (error, response, body) {
-    if (config.mlb.format == 'json') {
-      try {
-        body = JSON.parse(body);
-      } catch (e) {
-        console.log(e);
-        error = e;
-      }
-    } else {
-      if (!error && response.statusCode == 200) {
-        // Parse the XML to JSON
+    if (!error && response.statusCode == 200) {
+      if (config.mlb.format == 'json') {
+        try {
+          body = JSON.parse(body);
+        } catch (e) {
+          console.log(e);
+          error = e;
+        }
+      } else {
         parser.parseString(body, function (err, result) {
           body = result;
         });
