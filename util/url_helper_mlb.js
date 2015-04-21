@@ -1,159 +1,178 @@
+// config.mlb.access_level
+// config.mlb.version
+// config.mlb.apikey
+// config.mlb.year
+// config.mlb.season
+// config.mlb.format
 var config = require('../config');
 
-function createUrlWithEndpointAndYear(endpoint) {
-    // URL should look like: http://api.sportsdatallc.org/mlb-[access_level][version]/[endpoint]/[year].xml?api_key=[your_api_key]
-    return 'http://api.sportsdatallc.org/mlb-'
-        + config.mlb.access_level
-        + config.mlb.version
-        + '/'
-        + endpoint
-        + '/'
-        + config.mlb.year
-        + '.xml?api_key='
-        + config.mlb.apikey;
-}
-
-function createUrlWithEndpointAndDate(endpoint, year, month, day) {
-    // URL should look like: http://api.sportsdatallc.org/mlb-[access_level][version]/[endpoint]/boxscore/[year]/[month]/[day].xml?api_key=[your_api_key]
-    return 'http://api.sportsdatallc.org/mlb-'
-        + config.mlb.access_level
-        + config.mlb.version
-        + '/'
-        + endpoint
-        + '/'
-        + year
-        + '/'
-        + month
-        + '/'
-        + day
-        + '.xml?api_key='
-        + config.mlb.apikey;
-}
-
-function createUrlWithEndpointAndEvent(endpoint, event) {
-    // URL should look like: http://api.sportsdatallc.org/mlb-[access_level][version]/[endpoint]/[event_id].xml?api_key=[your_api_key]
-    return 'http://api.sportsdatallc.org/mlb-'
-        + config.mlb.access_level
-        + config.mlb.version
-        + '/'
-        + endpoint
-        + '/'
-        + event
-        + '.xml?api_key='
-        + config.mlb.apikey;
-}
-
-function createUrlWithEndpoint(endpoint) {
-    // URL should look like: http://api.sportsdatallc.org/mlb-[access_level][version]/[endpoint]?api_key=[your_api_key]
-    return 'http://api.sportsdatallc.org/mlb-'
-        + config.mlb.access_level
-        + config.mlb.version
-        + '/'
-        + endpoint
-        + '?api_key='
-        + config.mlb.apikey;
-}
-
-function createSeasonScheduleUrl() {
-
-    // URL should look like: http://api.sportsdatallc.org/mlb-[access_level][version]/schedule/[year].xml?api_key=[your_api_key]
-    return createUrlWithEndpointAndYear('schedule');
-}
-
-function create3DayScheduleUrl() {
-
-    // URL should look like: http://api.sportsdatallc.org/mlb-[access_level][version]/schedule-3day?api_key=[your_api_key]
-    return createUrlWithEndpoint('schedule-3day');
-}
-
-function createStandingsUrl() {
-
-    // URL should look like: http://api.sportsdatallc.org/mlb-[access_level][version]/standings/[year].xml?api_key=[your_api_key]
-    return createUrlWithEndpointAndYear('standings');
-}
-
-function createGameStatisticsUrl(event) {
-
-    // URL should look like: http://api.sportsdatallc.org/mlb-[access_level][version]/statistics/[event_id].xml?api_key=[your_api_key]
-    return createUrlWithEndpointAndEvent('statistics', event);
-}
-
 function createDailyBoxscoreUrl(year, month, day) {
-
-    // URL should look like: http://api.sportsdatallc.org/mlb-[access_level][version]/daily/boxscore/[year]/[month]/[day].xml?api_key=[your_api_key]
-    return createUrlWithEndpointAndDate('daily/boxscore', year, month, day);
+  // games/[year]/[month]/[day]/boxscore
+  return 'games/' + year + '/' + month + '/' + day + '/boxscore';
 }
 
-function createPlayByPlayUrl(event) {
-
-    // URL should look like: http://api.sportsdatallc.org/mlb-[access_level][version]/pbp/[event_id].xml?api_key=[your_api_key]
-    return createUrlWithEndpointAndEvent('pbp', event);
+function createDailyChangeLogUrl(year, month, day) {
+  // games/[year]/[month]/[day]/changes
+  return 'games/' + year + '/' + month + '/' + day + '/changes';
 }
 
-function createGameBoxscoreUrl(event) {
-
-    // URL should look like: http://api.sportsdatallc.org/mlb-[access_level][version]/boxscore/[event_id].xml?api_key=[your_api_key]
-    return createUrlWithEndpointAndEvent('boxscore', event);
+function createDailyScheduleUrl(year, month, day) {
+  // games/[year]/[month]/[day]/schedule
+  return 'games/' + year + '/' + month + '/' + day + '/schedule';
 }
 
-function createActiveTeamRosterUrl() {
-
-    // URL should look like: http://api.sportsdatallc.org/mlb-[access_level][version]/rosters/[year].xml?api_key=[your_api_key]
-    return createUrlWithEndpointAndYear('rosters');
+function createDailySummaryUrl(year, month, day) {
+  // games/[year]/[month]/[day]/summary
+  return 'games/' + year + '/' + month + '/' + day + '/summary';
 }
 
-function createFullTeamRosterUrl() {
-
-    // URL should look like: http://api.sportsdatallc.org/mlb-[access_level][version]/rosters-full/[year].xml?api_key=[your_api_key]
-    return createUrlWithEndpointAndYear('rosters-full');
+function createGameBoxScoreUrl(eventId){
+  // games/[event_id]/boxscore
+  return 'games/' + eventId + '/boxscore';
 }
 
-function createTeamsHierarchyUrl() {
-
-    // URL should look like: http://api.sportsdatallc.org/mlb-[access_level][version]/teams/[year].xml?api_key=[your_api_key]
-    return createUrlWithEndpointAndYear('teams');
+function createGameSummaryUrl(eventId){
+  // games/[event_id]/summary
+  return 'games/' + eventId + '/summary';
 }
 
+function createGlossaryUrl(){
+  // league/glossary
+  return 'league/glossary';
+}
+
+function createLeagueDepthChartUrl(){
+  // league/depth_charts
+  return 'league/depth_charts';
+}
+
+function createTeamHierarchyUrl(){
+  // league/hierarchy
+  return 'league/hierarchy';
+}
+
+function createLeagueLeadersUrl(){
+  // seasontd/[year]/[mlb_season]/leaders/statistics
+  return 'seasontd/' + config.mlb.year + config.mlb.season + '/leaders/statistics';
+}
+
+function createLeagueScheduleUrl(){
+  // games/[year]/[mlb_season]/schedule
+  return 'games/' + config.mlb.year + '/' + config.mlb.season + '/schedule';
+}
+
+function createPlayByPlayUrl(eventId){
+  // games/[event_id]/pbp
+  return 'games/' + eventId + '/pbp';
+}
+
+function createPlayerProfileUrl(playerId){
+  // players/[player_id]/profile
+  return 'players/' + playerId + '/profile';
+}
+
+function createRankingsUrl(){
+  // seasontd/[year]/[mlb_season]/rankings
+  return 'seasontd/' + config.mlb.year + '/' + config.mlb.season + '/rankings';
+}
+
+function createSeasonalSplitsUrl(teamId){
+  // seasontd/[year]/[mlb_season]/teams/[team_id]/splits
+  return 'seasontd/' + config.mlb.year + '/' + config.mlb.season + '/teams/' + teamId + '/splits';
+}
+
+function createSeasonalStatsUrl(teamId){
+  // seasontd/[year]/[mlb_season]/teams/[team_id]/statistics
+  return 'seasontd/' + config.mlb.year + '/' + config.mlb.season + '/teams/' + teamId + '/statistics';
+}
+
+function createStandingsUrl(){
+  // seasontd/[year]/[mlb_season]/standings
+  return 'seasontd/' + config.mlb.year + '/' + config.mlb.season + '/standings';
+}
+
+function createTeamDepthChartUrl(teamId){
+  // teams/[team_id]/depth_chart
+  return 'teams/' + teamId + '/depth_chart';
+}
+
+function createTeamProfileUrl(teamId){
+  // teams/[team_id]/depth_chart
+  return 'teams/' + teamId + '/profile';
+}
+
+function createActiveTeamRosterUrl(){
+  // league/active_rosters
+  return 'league/active_rosters';
+}
+
+function createFullTeamRosterUrl(){
+  // league/full_rosters
+  return 'league/full_rosters';
+}
 
 module.exports = {
-
-    getSeasonScheduleUrl: function() {
-        return createSeasonScheduleUrl();
-    },
-
-    get3DayScheduleUrl: function() {
-        return create3DayScheduleUrl();
-    },
-
-    getStandingsUrl: function() {
-        return createStandingsUrl();
-    },
-
-    getGameStatisticsUrl: function(event) {
-        return createGameStatisticsUrl(event);
-    },
-
-    getDailyBoxscoreUrl: function(year, month, day) {
-        return createDailyBoxscoreUrl(year, month, day);
-    },
-
-    getPlayByPlayUrl: function(event) {
-        return createPlayByPlayUrl(event);
-    },
-
-    getGameBoxscoreUrl: function(event) {
-        return createGameBoxscoreUrl(event);
-    },
-
-    getActiveTeamRosterUrl: function() {
-        return createActiveTeamRosterUrl();
-    },
-
-    getFullTeamRosterUrl: function() {
-        return createFullTeamRosterUrl();
-    },
-
-    getTeamsHierarchyUrl: function() {
-        return createTeamsHierarchyUrl();
-    }
+  getDailyBoxscoreUrl: function(year, month, day) {
+    return createDailyBoxscoreUrl(year, month, day);
+  },
+  getDailyChangeLogUrl: function(year, month, day) {
+    return createDailyChangeLogUrl(year, month, day);
+  },
+  getDailyScheduleUrl: function(year, month, day) {
+    return createDailyScheduleUrl(year, month, day);
+  },
+  getDailySummaryUrl: function(year, month, day) {
+    return createDailySummaryUrl(year, month, day);
+  },
+  getGameBoxScoreUrl: function(eventId) {
+    return createGameBoxScoreUrl(eventId);
+  },
+  getGameSummaryUrl: function(eventId) {
+    return createGameSummaryUrl(eventId);
+  },
+  getGlossaryUrl: function() {
+    return createGlossaryUrl();
+  },
+  getLeagueDepthChartUrl: function() {
+    return createLeagueDepthChartUrl();
+  },
+  getTeamHierarchyUrl: function(){
+    return createTeamHierarchyUrl();
+  },
+  getLeagueLeadersUrl: function(){
+    return createLeagueLeadersUrl();
+  },
+  getLeagueScheduleUrl: function(){
+    return createLeagueScheduleUrl();
+  },
+  getPlayByPlayUrl: function(eventId){
+    return createPlayByPlayUrl(eventId);
+  },
+  getPlayerProfileUrl: function(playerId){
+    return createPlayerProfileUrl(playerId);
+  },
+  getRankingsUrl: function(){
+    return createRankingsUrl();
+  },
+  getSeasonalSplitsUrl: function(teamId){
+    return createSeasonalSplitsUrl(teamId);
+  },
+  getSeasonalStatsUrl: function(teamId){
+    return createSeasonalStatsUrl(teamId);
+  },
+  getStandingsUrl: function(){
+    return createStandingsUrl();
+  },
+  getTeamDepthChartUrl: function(teamId){
+    return createTeamDepthChartUrl(teamId);
+  },
+  getTeamProfileUrl: function(teamId){
+    return createTeamProfileUrl(teamId);
+  },
+  getActiveTeamRosterUrl: function(){
+    return createActiveTeamRosterUrl();
+  },
+  getFullTeamRosterUrl: function(){
+    return createFullTeamRosterUrl();
+  }
 }
